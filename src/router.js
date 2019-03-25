@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import PhotoForm from '@/components/PhotoForm'
+import Index from '@/views/Index'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/PhotoForm',
-      name: 'PhotoForm',
-      component: PhotoForm
+      path: '/Index',
+      name: 'Index',
+      component: Index
     }
   ]
 })
