@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Show from '@/views/Show'
+import Edit from '@/views/Edit'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/Show',
-      name: 'Show',
-      component: Show
+      path: '/Edit',
+      name: 'Edit',
+      component: Edit
     }
   ]
 })
