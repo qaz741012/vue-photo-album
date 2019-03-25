@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import ItemListElement from '@/components/ItemListElement'
+import AuthPanel from '@/components/AuthPanel'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/ItemListElement',
-      name: 'ItemListElement',
-      component: ItemListElement
+      path: '/AuthPanel',
+      name: 'AuthPanel',
+      component: AuthPanel
     }
   ]
 })
