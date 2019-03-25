@@ -30,7 +30,7 @@ export default {
       this.$router.push("/photos/new");
     },
     handleSignup() {
-      this.$router.push("signup");
+      this.$router.push("/signup");
     },
     handleLogin() {
       this.$router.push("/login");
