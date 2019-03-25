@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SignUp from '@/views/SignUp'
+import Show from '@/views/Show'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/SignUp',
-      name: 'SignUp',
-      component: SignUp
+      path: '/Show',
+      name: 'Show',
+      component: Show
     }
   ]
 })
