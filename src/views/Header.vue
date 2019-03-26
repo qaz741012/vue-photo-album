@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -37,6 +39,29 @@ export default {
     },
     handleLogout() {
       console.log("logout");
+      let sessionData = JSON.parse(localStorage.getItem("photo-album-user"));
+      if (sessionData == null) { return; }
+
+      let token = sessionData.authToken;
+      let url = "http://35.201.135.120/photo_album/api/v1/logout";
+      // access logout api
+      axios
+        .post(url, { auth_token: token })
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.error(err.response.data.errors);
+        });
+
+      // emit auth-state event to $bus
+      this.$bus.$emit("auth-state", { action: "logout" });
+
+      // clean up local storage
+      localStorage.removeItem("photo-album-user");
+
+      //redirect to index
+      this.$router.push("/");
     },
     handleAuthState(payload) {
       let action = payload.action;
