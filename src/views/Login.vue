@@ -15,8 +15,8 @@ export default {
   methods: {
     handleLogin(payload) {
       console.log("handleLogin");
-      var that = this;
-      var url = "http://35.201.135.120/photo_album/api/v1/login";
+      let that = this;
+      let url = "http://35.201.135.120/photo_album/api/v1/login";
       axios
         .post(url, payload)
         .then(function(res) {
@@ -24,9 +24,9 @@ export default {
           console.log(res.data);
 
           //save auth_token to local storage
-          var authToken = res.data.auth_token;
-          var email = payload.email;
-          var sessionData = { authToken: authToken, email: email };
+          let authToken = res.data.auth_token;
+          let email = payload.email;
+          let sessionData = { authToken: authToken, email: email };
           localStorage.setItem("photo-album-user", JSON.stringify(sessionData));
 
           //emit auth-state to $bus

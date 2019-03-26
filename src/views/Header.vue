@@ -37,7 +37,36 @@ export default {
     },
     handleLogout() {
       console.log("logout");
+    },
+    handleAuthState(payload) {
+      let action = payload.action;
+      if (action === "login") {
+        this.isLogin = true;
+        this.userEmail = JSON.parse(localStorage.getItem("photo-album-user")).email;
+      } else if (action === "logout") {
+        this.isLogin = false;
+        this.userEmail = "";
+      }
     }
+  },
+  created() {
+    let that = this;
+    // subscribe auth-state event from bus
+    // 按下登入後，元件建立前會監聽事件，並決定是否顯示登入狀態(一次性)
+    this.$bus.$on("auth-state", this.handleAuthState);
+
+    //check auth state from local storage
+    // 重新整理後，已經沒有auth-state的監聽事件進來，只能依靠localstorage來判斷
+    // 目前是否為登入狀態(永久性)
+    let sessionData = JSON.parse(localStorage.getItem("photo-album-user"));
+    if (sessionData) {
+      this.handleAuthState({ action: "login" });
+    } else {
+      this.handleAuthState({ action: "logout" });
+    }
+  },
+  beforeDestroy() {
+    this.$bus.$off("auth-state", this.handleAuthState);
   }
 }
 </script>
