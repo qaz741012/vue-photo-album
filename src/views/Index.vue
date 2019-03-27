@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ItemListElement from "@/components/ItemListElement"
+import ItemListElement from "@/components/ItemListElement";
 import axios from "axios";
 
 export default {

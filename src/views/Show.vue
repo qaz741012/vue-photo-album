@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ImgDisplay from "@/components/ImgDisplay"
+import ImgDisplay from "@/components/ImgDisplay";
 import axios from "axios";
 
 export default {

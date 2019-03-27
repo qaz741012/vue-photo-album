@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import ImgDisplay from "@/components/ImgDisplay"
-import PhotoForm from "@/components/PhotoForm"
+import ImgDisplay from "@/components/ImgDisplay";
+import PhotoForm from "@/components/PhotoForm";
 import axios from "axios";
 
 export default {
