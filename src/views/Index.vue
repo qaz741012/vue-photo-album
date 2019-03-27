@@ -1,11 +1,12 @@
 <template>
 <div class="container">
-  <div class="item-list" v-for="photo in photos">
+  <div class="item-list" v-for="(photo, index) in photos" :key="photo.id">
     <ItemListElement :isLogin="isLogin"
                      :id="photo.id"
                      :title="photo.title"
                      :description="photo.description"
-                     :url="'http://35.201.135.120/photo_album'+photo.file_location.url" />
+                     :url="'http://35.201.135.120/photo_album'+photo.file_location.url"
+                     @destroy-item="handleDestroyItem(index)" />
   </div>
 </div>
 </template>
@@ -32,6 +33,9 @@ export default {
       } else if (action === "logout") {
         this. isLogin = false;
       }
+    },
+    handleDestroyItem(index) {
+      this.photos.splice(index, 1);
     }
   },
   created() {

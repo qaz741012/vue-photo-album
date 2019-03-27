@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   props: {
     isLogin: {
@@ -46,6 +48,20 @@ export default {
     },
     handleDestroy() {
       console.log('destroy');
+      let that = this;
+      let url = "http://35.201.135.120/photo_album/api/v1/photos/" + this.id;
+      let token = JSON.parse(localStorage.getItem("photo-album-user")).authToken;
+      let params = { auth_token: token };
+
+      axios
+        .delete(url, {params})
+        .then(function(res) {
+          console.log(res);
+          that.$emit("destroy-item");
+        })
+        .catch(function(err) {
+          console.error(err.response.data);
+        });
     },
   },
   computed: {
