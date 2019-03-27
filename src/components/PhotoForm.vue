@@ -61,6 +61,8 @@ export default {
       };
       console.log("submit photo form");
       console.dir(payload);
+
+      this.$emit("photo-form-submit", payload);
     }
   }
 }
